@@ -1,0 +1,33 @@
+{% extends 'katalog/base.html' %}
+
+{% block title %}Produk - Naufal Store{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+    <div class="container">
+        <p class="eyebrow">Katalog Produk</p>
+        <h1>Semua Produk</h1>
+        <p>Pilih produk sesuai kebutuhan, lalu buka halaman detail untuk melihat informasi lebih lengkap.</p>
+    </div>
+</section>
+
+<section class="container section-block">
+    <div class="catalog-toolbar">
+        <div>
+            <h2>Katalog Tersedia</h2>
+            <p>Menampilkan {{ produk_list|length }} produk siap jual.</p>
+        </div>
+        <div class="chips" aria-label="Kategori produk">
+            <span>Perangkat Digital</span>
+            <span>Aksesoris</span>
+            <span>Lifestyle</span>
+        </div>
+    </div>
+
+    <div class="product-grid">
+        {% for produk in produk_list %}
+            {% include 'katalog/_produk_card.html' with produk=produk %}
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
