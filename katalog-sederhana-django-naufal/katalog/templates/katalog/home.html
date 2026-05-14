@@ -1,0 +1,58 @@
+{% extends 'katalog/base.html' %}
+
+{% block title %}Beranda - Naufal Store{% endblock %}
+
+{% block content %}
+<section class="hero-section">
+    <div class="container hero-grid">
+        <div class="hero-copy">
+            <p class="eyebrow">Katalog Produk Pilihan</p>
+            <h1>Temukan produk favorit dengan informasi yang jelas.</h1>
+            <p class="hero-text">
+                Naufal Store menyajikan pilihan produk digital, aksesoris, dan perlengkapan harian
+                dengan tampilan katalog yang rapi agar pengunjung mudah membandingkan produk.
+            </p>
+            <div class="hero-actions">
+                <a class="primary-button" href="{% url 'produk_list' %}">Jelajahi Katalog</a>
+                <a class="secondary-button" href="{% url 'kontak' %}">Kontak Admin</a>
+            </div>
+        </div>
+        <aside class="hero-panel">
+            <p class="panel-label">Ringkasan Toko</p>
+            <div class="panel-row">
+                <span>Produk tersedia</span>
+                <strong>{{ total_produk }}</strong>
+            </div>
+            <div class="panel-row">
+                <span>Kategori utama</span>
+                <strong>Digital & Lifestyle</strong>
+            </div>
+            <div class="panel-row">
+                <span>Layanan</span>
+                <strong>Respons cepat</strong>
+            </div>
+        </aside>
+    </div>
+</section>
+
+<section class="container section-block">
+    <div class="section-heading">
+        <p class="eyebrow">Pilihan Terbaru</p>
+        <h2>Produk rekomendasi bulan ini</h2>
+        <p>Lihat beberapa produk yang paling sering dicari pengunjung.</p>
+    </div>
+    <div class="product-grid">
+        {% for produk in produk_unggulan %}
+            {% include 'katalog/_produk_card.html' with produk=produk %}
+        {% endfor %}
+    </div>
+</section>
+
+<section class="container info-strip">
+    <div>
+        <h2>Katalog praktis untuk melihat detail sebelum membeli</h2>
+        <p>Setiap produk dilengkapi informasi harga, stok, kategori, dan fitur utama agar keputusan lebih mudah.</p>
+    </div>
+    <a class="secondary-button" href="{% url 'produk_list' %}">Buka semua produk</a>
+</section>
+{% endblock %}
